@@ -69,7 +69,7 @@ You had been proposed to by the king, but also developed feelings for Thomas Sey
 Do you:
 
 [[a.) accept the king&#39;s request? |outlive him]]
-[[b.) choose to be with Thomas Seymour? |executed]]</tw-passagedata><tw-passagedata pid="6" name="Start" tags="" position="2150,1100" size="100,100">(enchant:?page,(bg:purple))
+[[b.) choose to be with Thomas Seymour? |execution of Catherine Parr]]</tw-passagedata><tw-passagedata pid="6" name="Start" tags="" position="2150,1100" size="100,100">(enchant:?page,(bg:purple))
 (if: $wifeCount is not 6)[King Henry VIII is infamously known for the six marriages of his lifetime. The fates of his wives are remembered using the following mnemonic: 
 Divorced, beheaded, died, divorced, beheaded, survived. 
 This iconic phrase helps people remember how each of his marriages ended, however, what were the events that led to each woman&#39;s fate? Rather than only attaching a morbid term to each of them, take a step into each of their worlds:
@@ -93,7 +93,17 @@ Set the mood with a Tudor-inspired playlist:
 (set: $nonCanonEnd to $badEnd + $goodEnd)
 You have changed the course of actual history $nonCanonEnd times.
 
-$goodEnd paths have ended in fortune, and $badEnd in misfortune.]</tw-passagedata><tw-passagedata pid="7" name="Start of Catherine of Aragon" tags="" position="2225,1350" size="100,100">(enchant:?page,(bg:#748ffc))
+$goodEnd paths have ended in fortune, and $badEnd in misfortune.
+
+(if:(history: where its name contains &quot;get executed early&quot;)&#39;s length is 1)[Anne Boleyn&#39;s final words: &quot;$boleynFinalWords&quot;]
+
+(if:(history: where its name contains &quot;execution of Anne&quot;)&#39;s length is 1)[Anne Boleyn&#39;s final words: &quot;I am come hither to die, for according to the law and by the law I am judged to die, and therefore I will speak nothing against it&quot;]
+
+(if:(history: where its name contains &quot;Jane gets executed&quot;)&#39;s length is 1)[Jane Seymour&#39;s final words: &quot;$seymourFinalWords&quot;]
+
+(if:(history: where its name contains &quot;execution of Catherine Howard FINAL&quot;)&#39;s length is 1)[Catherine Howard&#39;s final words: &quot;$howardFinalWords&quot;]
+
+(if:(history: where its name contains &quot;execution of Catherine Parr&quot;)&#39;s length is 1)[Catherine Parr&#39;s final words: &quot;$parrFinalWords&quot;]]</tw-passagedata><tw-passagedata pid="7" name="Start of Catherine of Aragon" tags="" position="2225,1350" size="100,100">(enchant:?page,(bg:#748ffc))
 (set: $wifeCount to it + 1)
 You are //Catherine of Aragon//, a daughter to Ferdinand and Isabella of Spain, the most prestigous monarchs in all of Europe. 
 
@@ -188,7 +198,10 @@ You tell Henry this.
 
 You are then tried for treason. You spoke against the King, questioning his morals and ideals, humiliating him. Not only are you being tried - your sister, Mary is being tried as well. 
 
+
 [[You and your sister are found guilty and are wrongfully executed.|Start]]
+
+(input-box: bind $boleynFinalWords, &quot;=XX=&quot;,&quot;Your final words?&quot;)
 
 (set: $badEnd to it + 1)</tw-passagedata><tw-passagedata pid="17" name="Anne survives" tags="" position="3350,1625" size="100,100">(enchant:?page,(bg:#ff8787))
 King Henry VIII is ecstatic. His familial love for you deepens and he is eternally grateful for the beautiful baby boy you have given him. Although you had recently grown suspicious of Henry&#39;s lustful behavior, and even growing a bit of jealousy ([[3, page 2|Bibliography]]), the birth of your son erradicated all suspicions of any unfaithful actions from Henry. 
@@ -221,6 +234,9 @@ Why? Well, you had grown an ever-growing grudge against Henry. You had no contro
 
 May 19, 1536. (text-colour:red)[The day comes for your execution. ][[You overhear plans of a wedding to take place at the end of the month. |Start of Jane Seymour]]
 
+Your final words:
+(force-input-box:&quot;=XX=&quot;,&quot;I am come hither to die, for according to the law and by the law I am judged to die, and therefore I will speak nothing against it\&quot;&quot;)
+
 [[You await for your eternal fate; angry and spiteful until the very end.|Start]]
 
 
@@ -242,6 +258,8 @@ You know of his true desires, and how his marriage to you is only to receive a s
 King Henry is infuriated. Because of rejection, he brings up your (somewhat distant) relationship to Anne, and he accuses you of being a witch. Anne&#39;s failure to carry a son goes beyond only affecting Anne&#39;s fate. 
 
 (text-colour:red)[[//You are tried and beheaded on the date of what was supposed to be your marital ceremony.//|Start]]
+
+(input-box: bind $seymourFinalWords, &quot;=XX=&quot;,&quot;Your final words?&quot;)
 
 (set: $badEnd to it + 1)</tw-passagedata><tw-passagedata pid="23" name=" birth of Edward and death of Jane" tags="" position="3475,475" size="100,100">(enchant:?page,(bg:#f783ac))
 You give birth to a beautiful baby boy named Edward. You can sense the king&#39;s joy from your delivery bed. However, shortly after your harsh delivery, you contract an infection. 
@@ -296,10 +314,12 @@ Do you:
 
 [[a.)entertain him?|execution of Catherine Howard pt 1]]
 
-[[b.)ignore him?|saving Catherine Howard again]]</tw-passagedata><tw-passagedata pid="29" name="execution of Catherine Howard" tags="" position="725,900" size="100,100">(enchant:?page,(bg:#da77f2))
+[[b.)ignore him?|saving Catherine Howard again]]</tw-passagedata><tw-passagedata pid="29" name="execution of Catherine Howard FINAL" tags="" position="725,900" size="100,100">(enchant:?page,(bg:#da77f2))
 Fall 1541. You are stripped of your status as the Queen of England.
 
 One year later, you are imprisoned and you await your punishment.
+
+(input-box: bind $howardFinalWords, &quot;=XX=&quot;,&quot;Your final words?&quot;)
 
 [[Your head is then chopped off with an axe.|Start]]
 </tw-passagedata><tw-passagedata pid="30" name="saving Catherine Howard again" tags="" position="1100,1025" size="100,100">(enchant:?page,(bg:#da77f2))
@@ -312,18 +332,13 @@ You try for a baby with the king and:
 [[c.)miscarry.|execution of CH 2]]</tw-passagedata><tw-passagedata pid="31" name="execution of CH" tags="" position="900,1025" size="100,100">(enchant:?page,(bg:#da77f2))
 You were not able to provide the king with a male heir. His countless attempts at having a son make him absolutely furious. 
 
-[[His (text-colour:red)[fury] is then redirected at (text-colour:red)[you].|execution of Catherine Howard]]
+[[His (text-colour:red)[fury] is then redirected at (text-colour:red)[you].|execution of Catherine Howard FINAL]]
 
 &lt;div style=&quot;width:360px;max-width:100%;&quot;&gt;&lt;div style=&quot;height:0;padding-bottom:58.06%;position:relative;&quot;&gt;&lt;iframe width=&quot;360&quot; height=&quot;209&quot; style=&quot;position:absolute;top:0;left:0;width:100%;height:100%;&quot; frameBorder=&quot;0&quot; src=&quot;https://imgflip.com/embed/95z93f&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&quot;https://imgflip.com/gif/95z93f&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="32" name="actually saving Catherine" tags="" position="1275,1025" size="100,100">(enchant:?page,(bg:#da77f2))
 You actually ended up fixing the king of England. You were able to spark his sexual desires after the failure of his last marriage, and were able to provide him with a male heir. 
 
 [[You live the rest of your life in lavish and wealth. |Start]]
-(set: $goodEnd to it + 1)</tw-passagedata><tw-passagedata pid="33" name="execution of Catherine Howard pt 1" tags="" position="750,575" size="100,100">(enchant:?page,(bg:#da77f2))
-You entertain Thomas and flirt back with him.
-
-Word then comes out about your unfaithfulness, which then gets to King Henry VIII. 
-
-[[You are arrested and tried for treason and adultery.|execution of Catherine Howard]]</tw-passagedata><tw-passagedata pid="34" name="outlive him" tags="" position="1625,1750" size="100,100">(enchant:?page,(bg:#a9e34b))
+(set: $goodEnd to it + 1)</tw-passagedata><tw-passagedata pid="33" name="outlive him" tags="" position="1625,1750" size="100,100">(enchant:?page,(bg:#a9e34b))
 Believing it is your duty to fulfill the king&#39;s request, you marry the king during the summer of 1543 in the famous Hampton Court Palace. 
 
 Almost five years pass, and King Henry VIII dies on January 28.
@@ -334,15 +349,24 @@ Thomas Seymour. ([[6|Bibliography]])
 
 [[You then pick up where you left off with Thomas, as you have outlived King Henry VIII.|Start]]
 
-&lt;iframe style=&quot;border-radius:12px&quot; src=&quot;https://open.spotify.com/embed/track/2Mpj1Ul5OFPyyP4wB62Rvi?utm_source=generator&quot; width=&quot;100%&quot; height=&quot;352&quot; frameBorder=&quot;0&quot; allowfullscreen=&quot;&quot; allow=&quot;autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;</tw-passagedata><tw-passagedata pid="35" name="executed" tags="" position="1375,1650" size="100,100">(enchant:?page,(bg:#a9e34b))
+&lt;iframe style=&quot;border-radius:12px&quot; src=&quot;https://open.spotify.com/embed/track/2Mpj1Ul5OFPyyP4wB62Rvi?utm_source=generator&quot; width=&quot;100%&quot; height=&quot;352&quot; frameBorder=&quot;0&quot; allowfullscreen=&quot;&quot; allow=&quot;autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;</tw-passagedata><tw-passagedata pid="34" name="execution of Catherine Parr" tags="" position="1375,1650" size="100,100">(enchant:?page,(bg:#a9e34b))
 You reject his offer to marriage, but you should have known better. Henry was no stranger to wrongfully executing people, especially those he found as love interests. His last wife with the same name was just beheaded not too long ago. 
 
 (text-colour:red)[[You are tried for treason for rejecting the king&#39;s endeavors and are executed.|Start]]
 
-(set: $badEnd to it + 1)</tw-passagedata><tw-passagedata pid="36" name="execution of CH 2" tags="" position="900,1375" size="100,100">(enchant:?page,(bg:#da77f2))
+(input-box: bind $parrFinalWords, &quot;=XX=&quot;,&quot;Your final words?&quot;)
+
+(set: $badEnd to it + 1)</tw-passagedata><tw-passagedata pid="35" name="execution of CH 2" tags="" position="900,1375" size="100,100">(enchant:?page,(bg:#da77f2))
 You were not able to provide the king with a male heir. His countless attempts at having a son make him absolutely furious. 
 
-[[His (text-colour:red)[fury] is then redirected at (text-colour:red)[you].|execution of Catherine Howard]]</tw-passagedata></tw-storydata>
+[[His (text-colour:red)[fury] is then redirected at (text-colour:red)[you].|execution of Catherine Howard FINAL]]</tw-passagedata><tw-passagedata pid="36" name="execution of Catherine Howard pt 1" tags="" position="750,575" size="100,100">(enchant:?page,(bg:#da77f2))
+You entertain Thomas and flirt back with him.
+
+Word then comes out about your unfaithfulness, which then gets to King Henry VIII. 
+
+[[You are arrested and tried for treason and adultery.|execution of Catherine Howard FINAL]]
+
+</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
